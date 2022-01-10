@@ -4573,4 +4573,4 @@ import { BiZoomOutComponent } from './icons/bi-zoom-out';
     BiZoomOutComponent,
   ],
 })
-export class BootstrapIconsModule {}
+export class GtBootstrapIconsModule {}
