@@ -8,11 +8,16 @@ const baseUrl = path.normalize(
 const writeFileDir = path.normalize(
   `${pathRoot}/projects/gt-bootstrap-icons/src/lib`
 );
+
+const writeFileIconDir = path.normalize(
+  `${pathRoot}/projects/gt-bootstrap-icons/src/lib/icons`
+);
 var svgDir = fs.readdirSync(baseUrl);
 
 let importCom = "";
 let declarCom = "";
-if (!fs.existsSync(writeFileDir)) {
+
+if (!fs.existsSync(writeFileIconDir)) {
   fs.mkdirSync(`${pathRoot}/projects/gt-bootstrap-icons/src/lib/icons`);
 }
 
@@ -69,7 +74,7 @@ svgDir.forEach((file) => {
         ${declarCom}
       ]
     })
-    export class BootstrapIconsModule { }
+    export class GtBootstrapIconsModule { }
   `;
 
   fs.writeFileSync(
