@@ -1,11 +1,30 @@
 {
   "name": "gt-bootstrap-icons",
-  "version": "0.0.1",
+  "version": "0.0.3",
+  "keywords": [
+    "bootstrap",
+    "icon",
+    "bootstrap-icons",
+    "angular icon",
+    "angular bootstrap-icons",
+    "gt-bootstrap-icons"
+  ],
+  "main": "projects/gt-bootstrap-icons/src/public-api.ts",
+  "homepage": "https://github.com/realitybio/gt-bootstrap-icons",
+  "author": "https://github.com/realitybio",
   "peerDependencies": {
     "@angular/common": "^13.1.0",
     "@angular/core": "^13.1.0"
   },
   "dependencies": {
     "tslib": "^2.3.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/realitybio/gt-bootstrap-icons.git"
+  },
+  "bugs": {
+    "url": "https://github.com/realitybio/gt-bootstrap-icons/issues"
+  },
+  "license": "MIT"
 }
