@@ -5,6 +5,10 @@ const pathRoot = path.resolve(__dirname, "..");
 const baseUrl = path.normalize(
   `${pathRoot}/node_modules/bootstrap-icons/icons/`
 );
+const writeFileBaseDir = path.normalize(
+  `${pathRoot}/projects/gt-bootstrap-icons/src/`
+);
+
 const writeFileDir = path.normalize(
   `${pathRoot}/projects/gt-bootstrap-icons/src/lib`
 );
@@ -16,6 +20,16 @@ var svgDir = fs.readdirSync(baseUrl);
 
 let importCom = "";
 let declarCom = "";
+let exprtCom = `
+              /*
+              * Public API Surface of gt-bootstrap-icons
+              */
+
+              export * from './lib/gt-bootstrap-icons.service';
+              export * from './lib/gt-bootstrap-icons.component';
+              export * from './lib/gt-bootstrap-icons.module';
+
+              `;
 
 if (!fs.existsSync(writeFileIconDir)) {
   fs.mkdirSync(`${pathRoot}/projects/gt-bootstrap-icons/src/lib/icons`);
@@ -38,6 +52,9 @@ svgDir.forEach((file) => {
     const componentName = `Bi${letterName}Component`;
 
     importCom += `import { ${componentName} } from './icons/bi-${name}';`;
+
+    exprtCom += `export * from './lib/icons/bi-${name}';`;
+
     declarCom += `${componentName},`;
 
     let Component = `
@@ -81,6 +98,8 @@ svgDir.forEach((file) => {
     `${writeFileDir}/gt-bootstrap-icons.module.ts`,
     iconsModules
   );
+
+  fs.writeFileSync(`${writeFileBaseDir}/public-api.ts`, exprtCom);
 });
 
 console.log("finish");
