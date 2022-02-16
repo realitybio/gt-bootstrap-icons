@@ -3,15 +3,16 @@
 ### install
 
 use npm
+
 ```
     npm install gt-bootstrap-icons --save
 ```
-use yarn 
+
+use yarn
+
 ```
     yarn add gt-bootstrap-icons
 ```
-
-
 
 ### use before
 

@@ -1,20 +1,3 @@
-import { Component, OnInit } from '@angular/core';
-
-@Component({
-  selector: 'bi-egg-fill, i[icon="bi-egg-fill"]',
-  template: `<svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="16"
-    height="16"
-    fill="currentColor"
-    class="bi bi-egg-fill"
-    viewBox="0 0 16 16"
-  >
-    <path d="M14 10a6 6 0 0 1-12 0C2 5.686 5 0 8 0s6 5.686 6 10z" />
-  </svg>`,
-})
-export class BiEggFillComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit(): void {}
-}
+export const BiEggFill = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-egg-fill" viewBox="0 0 16 16">
+  <path d="M14 10a6 6 0 0 1-12 0C2 5.686 5 0 8 0s6 5.686 6 10z"/>
+</svg>`;

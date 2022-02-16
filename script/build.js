@@ -5,9 +5,6 @@ const pathRoot = path.resolve(__dirname, "..");
 const baseUrl = path.normalize(
   `${pathRoot}/node_modules/bootstrap-icons/icons/`
 );
-const writeFileBaseDir = path.normalize(
-  `${pathRoot}/projects/gt-bootstrap-icons/src/`
-);
 
 const writeFileDir = path.normalize(
   `${pathRoot}/projects/gt-bootstrap-icons/src/lib`
@@ -16,20 +13,8 @@ const writeFileDir = path.normalize(
 const writeFileIconDir = path.normalize(
   `${pathRoot}/projects/gt-bootstrap-icons/src/lib/icons`
 );
+
 var svgDir = fs.readdirSync(baseUrl);
-
-let importCom = "";
-let declarCom = "";
-let exprtCom = `
-              /*
-              * Public API Surface of gt-bootstrap-icons
-              */
-
-              export * from './lib/gt-bootstrap-icons.service';
-              export * from './lib/gt-bootstrap-icons.component';
-              export * from './lib/gt-bootstrap-icons.module';
-
-              `;
 
 if (!fs.existsSync(writeFileIconDir)) {
   fs.mkdirSync(`${pathRoot}/projects/gt-bootstrap-icons/src/lib/icons`);
@@ -49,46 +34,23 @@ svgDir.forEach((file) => {
 
     var svgElement = fs.readFileSync(dir);
 
-    const componentName = `Bi${letterName}Component`;
-
-    importCom += `import { ${componentName} } from './icons/bi-${name}';`;
-
-    exprtCom += `export * from './lib/icons/bi-${name}';`;
-
-    declarCom += `${componentName},`;
-
-    let Component = `
-    import { Component, OnInit } from '@angular/core';
-
-      @Component({
-        selector: 'bi-${name}, i[icon="bi-${name}"]',
-        template: \`${svgElement}\`,
-      })
-      export class ${componentName} implements OnInit {
-
-        constructor() { }
-
-        ngOnInit(): void {}
-
-      }
+    let element = `
+      export const Bi${letterName} = \`${svgElement}\`
     `;
 
-    fs.writeFileSync(`${writeFileDir}/icons/bi-${name}.ts`, Component);
+    fs.writeFileSync(`${writeFileDir}/icons/bi-${name}.ts`, element);
   }
 
   let iconsModules = `
     import { NgModule } from '@angular/core';
-    ${importCom}
 
 
     @NgModule({
       declarations: [
-        ${declarCom}
       ],
       imports: [
       ],
       exports: [
-        ${declarCom}
       ]
     })
     export class GtBootstrapIconsModule { }
@@ -98,8 +60,6 @@ svgDir.forEach((file) => {
     `${writeFileDir}/gt-bootstrap-icons.module.ts`,
     iconsModules
   );
-
-  fs.writeFileSync(`${writeFileBaseDir}/public-api.ts`, exprtCom);
 });
 
 console.log("finish");

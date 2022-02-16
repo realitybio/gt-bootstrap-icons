@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GtBootstrapIconsComponent } from './gt-bootstrap-icons.component';
+import { GtBootstrapIconComponent } from './gt-bootstrap-icon.component';
 
 describe('GtBootstrapIconsComponent', () => {
-  let component: GtBootstrapIconsComponent;
-  let fixture: ComponentFixture<GtBootstrapIconsComponent>;
+  let component: GtBootstrapIconComponent;
+  let fixture: ComponentFixture<GtBootstrapIconComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [GtBootstrapIconsComponent],
+      declarations: [GtBootstrapIconComponent],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(GtBootstrapIconsComponent);
+    fixture = TestBed.createComponent(GtBootstrapIconComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
